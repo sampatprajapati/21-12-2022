@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculator</title>
+        <link rel="stylesheet" href="./css/style.css" />
+        <style>
+            .cltr {
+                width: 400px;
+                height: 400px;
+                background: #333;
+                margin: 50px auto;
+                border-radius: 20px;
+            }
+            .rslt {
+                width: 90%;
+                height: 60px;
+                line-height: 60px;
+
+                margin: 50px auto;
+                background: #ccc;
+                border-radius: 10px;
+                position: relative;
+                top: 20px;
+                padding-right: 20px;
+                text-align: right;
+            }
+            table.tbl {
+                width: 100%;
+                height: 290px;
+                text-align: center;
+            }
+            table button {
+                padding: 20px 30px;
+                font-weight: bolder;
+            }
+        </style>
+        <script src="./js/script.js"></script>
+    </head>
+    <body>
+        <div class="cltr">
+            <div class="rslt"></div>
+            <table class="tbl">
+                <tr>
+                    <td>
+                        <button onclick="bfun1(this)">7</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">8</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">9</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">X</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="bfun1(this)">4</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">5</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">6</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">/</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="bfun1(this)">1</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">2</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">3</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">-</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="bfun1(this)">0</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">.</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">=</button>
+                    </td>
+                    <td>
+                        <button onclick="bfun1(this)">+</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            //I can write the js code before the closing of body tag
+
+            //Global Variable
+            //object.method();
+            let r = document.querySelector(".rslt");
+            var lvalue;
+            var rvalue;
+            var op = "";
+
+            //1. bfun1ction defination
+            function bfun1(abc) {
+                // abc is a formal arguemnt
+                if (op !== "X" || op !== "/" || op !== "-" || op !== "+") {
+                    window.localStorage.setItem("rvalue", rvalue);
+                    console.log("RightValue", abc.innerHTML);
+                }
+                switch (abc.innerHTML) {
+                    case "X":
+                        // code block
+                        lvalue = r.innerHTML;
+                        console.log("LeftValue is ", lvalue);
+                        operator = "X";
+                        console.log("Multiplication operation");
+                        break;
+                    case "/":
+                        // code block
+                        console.log("Division operation");
+                        break;
+                    case "-":
+                        // code block
+                        console.log("Substration operation");
+                        break;
+                    case "+":
+                        // code block
+                        console.log("Addition operation");
+                        break;
+                    case "=":
+                        // code block
+                        console.log("Result");
+                        // LeftValue Operator RightValue
+                        console.log("LeftValue is ", lvalue);
+                        console.log("Operator is ", op);
+                        console.log(
+                            "RightValue is",
+                            window.localStorage.getItem("rvalue")
+                        );
+
+                        break;
+                    default:
+                    // code block
+                }
+                //console.log(elem.innerHTML);
+                r.innerHTML = r.innerHTML + abc.innerHTML;
+                //console.log(r.innerHTML);
+            }
+        </script>
+    </body>
+</html>
